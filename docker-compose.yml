@@ -1,0 +1,13 @@
+version: '3'
+services:
+  pedidos:
+    build: ./src/Pedidos
+    image: conectcar/pedidos:latest
+
+  cobranca:
+    build: ./src/Cobranca
+    image: conectcar/cobranca:latest
+        
+  envioadesivos:
+    build: ./src/EnvioAdesivos
+    image: conectcar/envioadesivos:latest
