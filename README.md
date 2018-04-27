@@ -13,24 +13,27 @@ Farão parte de suas responsabilidades:
 * Praticar automatização de infraestrutura 
 
 # Exercício de programação
-Você deverá fazer um _fork_ desse repositório e nos enviar um _pull request_ com a solução em que três microsserviços se comuniquem de modo que atendam os requisitos de escalabilidade.
+Você deverá fazer um _fork_ desse repositório e nos enviar um _pull request_ com a solução em que três microsserviços se comuniquem de modo que atendam os requisitos de escalabilidade. O principal aspecto de escalabilidade que analisaremos é a capacidade de aumentar a quantidade de requests por segundo com a adição de mais nós ao serviço.
 
 O código atual é um mero _entrypoint_ para a solução e você pode implementá-la do jeito que achar mais performático e que atendam os requisitos. Porém é importante que cada projeto rode em sua própria instância para permitir a escala individualmente.
 
 ## Cenário
-**_[Esse é um cenário hipotético com a finalidade de testar as habilidades do candidato]_**
+**_[Cenário hipotético com a finalidade de testar as habilidades do candidato]_**
 
-Quando um cliente adquire um plano da ConectCar, nós precisamos solicitar a um fornecedor terceirizado para que envie nosso adesivo ao cliente.
+Quando um cliente adquire um plano da ConectCar, precisamos solicitar a um fornecedor o envio do nosso adesivo ao endereço de entrega do cliente.
 
-Além disso, ao adquirir o plano, o custo do adesivo é cobrado do cliente. Essa cobrança é realizada através de um _gateway_ de pagamento.
+Ao adquirir o plano, o custo do adesivo é cobrado do cliente. A cobrança é realizada através de um _gateway_ de pagamento.
 
-Quando tanto a cobrança quanto o aviso de postagem é recebido nós avisamos o cliente que o adesivo está a caminho.
+Deveremos avisar o cliente que o adesivo está a caminho quando: 
+* O processo de cobrança for concluído com sucesso
+* Recebermos o aviso de postagem
 
-A ConectCar quer implantar esse cenário usando uma arquitetura de _microservices_ que pode ser facilmente escalada, visto que os microsserviços que comunicam com os parceiros podem sofrer com a latência e falhas de comunicação.
+A ConectCar quer implantar este cenário usando uma arquitetura de _microservices_ que possa ser facilmente escalada. Vale lembrar que os serviços que se comunicarão com os parceiros poderão sofrer com latência e falhas de comunicação.
 
 ## Solução
 
 O código atual apresenta três aplicações console em .NET Core:
+
 * Pedidos
 * EnvioAdesivos
 * Cobranca
@@ -76,4 +79,4 @@ Ao conseguir realizar a cobrança, um evento de domínio deve ser disparado para
 
 * Lembre-se que o _deploy_ de microsserviços pode ser complicado. Pensar em uma solução para facilitar esse processo é um excelente diferencial.
 
-* Alguns eventos podem ser úteis não apenas para a aplicação de pedidos. Por uma questão de melhoria em nosso produto, poderíamos, por exemplo, querer notificar nossos clientes quando seu adesivo é enviado. Ou então, integrar um serviço de rastreio deste envio. Como esse evento poderia ser reutilizado no futuro por outras aplicações como essas de notificação ou rastreio?
+* Alguns eventos podem ser úteis não apenas para a aplicação de pedidos. Por uma questão de melhoria em nosso produto, poderíamos, por exemplo, notificar nossos clientes quando seu adesivo é enviado. Ou então, integrar um serviço de rastreio deste envio. Como esse evento poderia ser reutilizado no futuro por outras aplicações como essas de notificação ou rastreio?
