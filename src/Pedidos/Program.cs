@@ -14,10 +14,9 @@ namespace Pedidos
           .BuildServiceProvider();
 
             var pedidos = new Processador().LerPedidos();
-            var pedidos100 = (from p in pedidos select p).Take(100);
 
             var pedidosService = serviceProvider.GetService<IPedidosService>();
-            pedidosService.ProcessarPedidos(pedidos100.ToList());
+            pedidosService.ProcessarPedidos(pedidos);
         }
     }
 }
