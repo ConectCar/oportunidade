@@ -25,5 +25,8 @@ namespace Pedidos
         public DateTime Data { get; set; } = DateTime.Now;
         public string Placa { get; set; }
         public decimal Valor { get; set; }
+        public bool EnvioAdesivo { get; set; }
+        public bool Cobranca { get; set; }
+        public bool Processando { get; set; }
     }
 }
