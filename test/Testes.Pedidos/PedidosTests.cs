@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Pedidos.Tests
 {
-    public class UnitTest1
+    public class PedidosTests
     {
         public PedidosService PedidosService()
         {
